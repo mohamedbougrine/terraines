@@ -2,6 +2,8 @@ from django.db import models
 from datetime import datetime
 from proprietaire.models import proprietaire
 
+
+
 class Listing(models.Model):
   proprietaire = models.ForeignKey(proprietaire, on_delete=models.DO_NOTHING)
   title = models.CharField(max_length=200)
@@ -10,6 +12,8 @@ class Listing(models.Model):
   state = models.CharField(max_length=100)
   zipcode = models.CharField(max_length=20)
   description = models.TextField(blank=True)
+  latitude = models.DecimalField(max_digits=9, decimal_places=6,null=True)
+  longitude = models.DecimalField(max_digits=9, decimal_places=6,null=True)
   price = models.IntegerField()
   photo_main = models.ImageField(upload_to='photos/%Y/%m/%d/')
   photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
